@@ -2,6 +2,7 @@ require('dotenv').config();
 const { Sequelize } = require('sequelize');
 const fs = require('fs');
 const path = require('path');
+//const Breed = require('./models/Breed');
 const {
   DB_USER, DB_PASSWORD, DB_HOST,
 } = process.env;
@@ -30,9 +31,11 @@ sequelize.models = Object.fromEntries(capsEntries);
 
 // En sequelize.models están todos los modelos importados como propiedades
 // Para relacionarlos hacemos un destructuring
-const { Dog } = sequelize.models;
+const { Dog, Breed, Temperament } = sequelize.models;
 
 // Aca vendrian las relaciones
+Breed.belongsToMany(Temperament, {through : "breeds_temperaments"});
+Temperament.belongsToMany(Breed, {through : "breeds_temperaments"});
 // Product.hasMany(Reviews);
 
 module.exports = {
