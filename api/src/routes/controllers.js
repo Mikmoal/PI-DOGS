@@ -4,21 +4,35 @@ const axios = require("axios");
 
 const getApiInfo = async () => {
   const apiUrl = await axios.get("https://api.thedogapi.com/v1/breeds");
-  const apiInfo = await apiUrl.data.map((el) => {
-    return {
-      weight: el.weight,
-      height: el.height,
-      id: el.id,
-      name: el.name,
-      bred_for: el.bred_for,
-      breed_group: el.breed_group,
-      life_span: el.life_span,
-      temperament: el.temperament,
-      origin: el.origin,
-      reference_image_id: el.reference_image_id,
-      image: el.image,
-    };
-  });
+  const apiInfo = await apiUrl.data.map(
+    ({
+      weight,
+      height,
+      id,
+      name,
+      bred_for,
+      breed_group,
+      life_span,
+      temperament,
+      origin,
+      reference_image_id,
+      image,
+    }) => {
+      return {
+        weight,
+        height,
+        id,
+        name,
+        bred_for,
+        breed_group,
+        life_span,
+        temperament,
+        origin,
+        reference_image_id,
+        image,
+      };
+    }
+  );
   return apiInfo;
 };
 
@@ -42,7 +56,7 @@ const getAllBreeds = async () => {
 };
 
 module.exports = {
-    getApiInfo,
-    getDbInfo,
-    getAllBreeds
-}
+  getApiInfo,
+  getDbInfo,
+  getAllBreeds,
+};

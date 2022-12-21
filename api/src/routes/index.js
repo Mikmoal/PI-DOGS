@@ -1,7 +1,6 @@
 const { Router } = require("express");
 const axios = require("axios");
 // TRAER LAS TABLAS CREADAS DE SQL
-const { Op } = require("sequelize");
 const Breed = require("../models/Breed");
 const Temperament = require("../models/Temperament");
 // Importar todos los routers;
