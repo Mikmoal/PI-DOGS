@@ -55,8 +55,28 @@ const getAllBreeds = async () => {
   return infoTotal;
 };
 
+const getBreedByName = async (name) => {
+  let allBreeds = await getAllBreeds();
+  const result = allBreeds.filter((breed) => {
+    return breed.name === name;
+  });
+  if (result.length) return result;
+  return { error: "Breed by name not found" };
+};
+
+const getBreedById = async (id) => {
+  let allBreeds = await getAllBreeds();
+  const result = allBreeds.filter((breed) => {
+    return breed.id === id;
+  });
+  if (result.length) return result;
+  return { error: "Breed by id not found" };
+};
+
 module.exports = {
   getApiInfo,
   getDbInfo,
   getAllBreeds,
+  getBreedByName,
+  getBreedById,
 };
