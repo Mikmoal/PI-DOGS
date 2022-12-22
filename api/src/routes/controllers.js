@@ -40,7 +40,7 @@ const getDbInfo = async () => {
   return await Breed.findAll({
     include: {
       model: Temperament,
-      attributes: ["nombre"],
+      attributes: ["name"],
       through: {
         attributes: [],
       },
