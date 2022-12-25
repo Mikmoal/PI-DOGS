@@ -10,20 +10,36 @@ module.exports = (sequelize) => {
       allowNull: false,
       primaryKey: true
     },
-    nombre: {
+    name: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    altura: {
+    heightMin: {
       type: DataTypes.INTEGER,
       allowNull: false
     },
-    peso: {
+    heightMax: {
       type: DataTypes.INTEGER,
       allowNull: false
     },
-    años_vida: {
+    weightMin: {
       type: DataTypes.INTEGER,
+      allowNull: false
+    },
+    weightMax: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+    },
+    life_span_min: {
+      type: DataTypes.INTEGER,
+      allowNull: true
+    },
+    life_span_max: {
+      type: DataTypes.INTEGER,
+      allowNull: true
+    },
+    image: {
+      type: DataTypes.STRING(20000),
       allowNull: true
     },
     createdInDb: {
@@ -31,5 +47,8 @@ module.exports = (sequelize) => {
       allowNull: false,
       defaultValue: true
       }
+  }, {
+    timestamps: false,
+    freezeTableName: true,
   });
 };
