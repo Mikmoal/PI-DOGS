@@ -14,23 +14,23 @@ ul.pagination li {
     display: inline;
 }
 
-ul.pagination li a {
-    color: black;
-    float: left;
-    padding: 8px 16px;
-    text-decoration: none;
-    border-radius: 5px;
-    transition: background-color .3s;
-}
+// ul.pagination li a {
+//     color: black;
+//     float: left;
+//     padding: 8px 16px;
+//     text-decoration: none;
+//     border-radius: 5px;
+//     transition: background-color .3s;
+// }
 
-ul.pagination li a.active {
-    background-color: #4CAF50;
-    color: white;
-}
+// ul.pagination li a.active {
+//     background-color: #4CAF50;
+//     color: white;
+// }
 
-ul.pagination li a:hover:not(.active) {
-    background-color: #ddd;
-}
+// ul.pagination li a:hover:not(.active) {
+//     background-color: #ddd;
+// }
 
 .loading {
     position: absolute;
@@ -39,11 +39,65 @@ ul.pagination li a:hover:not(.active) {
     transform: translate(-50%, -50%);
 }
 
-.buttonNumber {
-    cursor: pointer;
-    margin-top: 10px;
-    border: 1px, black;
-    color: black;
-    font-size: 15px;
+// .buttonNumber {
+//     cursor: pointer;
+//     margin-top: 10px;
+//     font-size: 15px;
 
+//     display: inline-block;
+//     width: auto;
+//     padding: 8px;
+//     color: rgb(0, 0, 0);
+//     border: none;
+//     text-align: center;
+//     outline: none;
+//     text-decoration: none;
+//     transition: background-color 0.2s ease-out,
+//         color 0.2s ease-out;
+// }
+
+// .buttonNumber:hover,
+// .buttonNumber:active {
+//     background-color: #81a9cc;
+//     color: #000;
+//     transition: background-color 0.3s ease-in,
+//         color 0.3s ease-in;
+// }
+
+/* CSS */
+.buttonNumber {
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0);
+    border-radius: 12px;
+    box-shadow: transparent 0 0 0 3px, rgba(18, 18, 18, 0) 0 6px 20px;
+    box-sizing: border-box;
+    color: #121212;
+    cursor: pointer;
+    display: inline-flex;
+    flex: 1 1 auto;
+    font-family: Inter, sans-serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    justify-content: center;
+    line-height: 1;
+    margin: 0;
+    outline: none;
+    padding: 1rem 1.2rem;
+    text-align: center;
+    text-decoration: none;
+    transition: box-shadow .2s, -webkit-box-shadow .2s;
+    white-space: nowrap;
+    border: none;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+}
+
+.buttonNumber:hover,
+.buttonNumber:focus {
+    //box-shadow: #121212 0 0 0 3px, transparent 0 0 0 0;
+        background-color: #0b6dee;
+        color: #000;
+        transition: background-color 0.3s ease-in,
+            color 0.3s ease-in;
 }

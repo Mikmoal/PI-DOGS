@@ -16,13 +16,16 @@ export default function Pagination({ postPerPage, totalPost, paginate, currentPa
         <div>
 
             <ul className={style.pagination}>
-                <li><a href={() => false} onClick={() => paginate(currentPage > 1 ? currentPage - 1 : 1)}>{"<<"}</a></li>
+                <li>
+                <button className={style.buttonNumber} onClick={() => paginate(currentPage > 1 ? currentPage - 1 : 1)}>{"<<"}</button>
+                </li>
+                 
 
                 {pageNumbers.map(number => (
-                    <li key={number}><a href={() => false} onClick={() => paginate(number)}>{number}</a></li>
+                    <li key={number}><button className={style.buttonNumber} onClick={() => paginate(number)}>{number}</button></li>
                 ))}
 
-                <li><a href={() => false} onClick={() => paginate(currentPage < pageNumbers.length ? currentPage + 1 : pageNumbers.length)}>{">>"}</a></li>
+                <li><button className={style.buttonNumber} onClick={() => paginate(currentPage < pageNumbers.length ? currentPage + 1 : pageNumbers.length)}>{">>"}</button></li>
             </ul>
 
         </div>
