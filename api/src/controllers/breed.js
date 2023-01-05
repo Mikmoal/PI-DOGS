@@ -8,22 +8,10 @@ const getBreedsApiInfo = async () => {
     `https://api.thedogapi.com/v1/breeds?api_key=${API_KEY}`
   );
   const apiInfo = await apiBreeds.data.map(
-    ({
-      weight,
-      height,
-      id,
-      name,
-      bred_for,
-      breed_group,
-      life_span,
-      temperament,
-      origin,
-      reference_image_id,
-      image,
-    }) => {
-      let weight = weight.metric.split("-");
-      let height = height.metric.split("-");
-      let life_span = life_span.split("-");
+    (e) => {
+      let weight = e.weight.metric.split("-");
+      let height = e.height.metric.split("-");
+      let life_span = e.life_span.split("-");
       let weightMin = parseInt(weight[0]);
       let weightMax = parseInt(weight[1]);
       let heightMin = parseInt(height[0]);
@@ -35,16 +23,16 @@ const getBreedsApiInfo = async () => {
         weightMax: weightMax ? weightMax : weightMin,
         heightMin: heightMin ? heightMin : heightMax, //e.height.metric,
         heightMax: heightMax ? heightMax : heightMin,
-        id,
-        name,
-        bred_for,
-        breed_group,
+        id: e.id,
+        name: e.name,
+        bred_for: e.bred_for,
+        breed_group: e.breed_group,
         life_span_min: life_span_min ? life_span_min : life_span_max,
         life_span_max: life_span_max ? life_span_max : life_span_min,
-        temperament: temperament ? temperament : "Not Temperament",
-        origin,
-        reference_image_id,
-        image: image.url,
+        temperament: e.temperament ? e.temperament : "Not Temperament",
+        origin: e.origin,
+        reference_image_id: e.reference_image_id,
+        image: e.image.url,
       };
     }
   );

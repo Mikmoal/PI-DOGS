@@ -1,5 +1,5 @@
 const { Router } = require("express");
-const { Breed,Temperament,breeds_temperaments } = require("../db.js");
+//const { Breed,Temperament,breeds_temperaments } = require("../db.js");
 const Breed = require('./breeds');
 const Temperament = require('./temperaments')
 

@@ -1,0 +1,62 @@
+@import "../sass/mixins.scss";
+
+.contDetail {
+    min-height: 150vh;
+    //background-color:rgb(161, 215, 226);
+    background-image: url(../img/dogsblue.jpeg);
+    background-size: 800px;
+}
+
+.nav {
+    height: 50px;
+    background-color: #81a9cc;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 10px;
+}
+
+.detail {
+    display: flex;
+    // background-color: rgb(161, 215, 226);
+    flex-direction: column;
+    align-items: center;
+    background: #81a9cc;
+    background: linear-gradient(0deg, rgba(159, 180, 244, 1) 0%, rgba(202, 221, 237, 1) 100%);
+    // background-color: rgb(161, 215, 226);
+    border-radius: 18px;
+    padding: 20px;
+    width: 30%;
+    position: absolute;
+    top: 65%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin-top: 10px;
+    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+}
+
+.img {
+    width: 400px;
+    height: 300px;
+    object-fit: cover;
+    align-items: center;
+}
+
+
+.loading {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.buttonLink {
+    cursor: pointer;
+    border: none;
+    border-radius: 15px;
+    color: black;
+    font-size: 15px;
+    width: 8vw;
+    height: 6vh;
+    background-color: #0b6dee;
+}

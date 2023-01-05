@@ -1,0 +1,54 @@
+@import "../sass/mixins.scss";
+@import "../sass/variables.scss";
+
+
+.fondo {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    background-image: url("../img/dogs-running-scaled.jpg");
+    background-color: rgb(30, 91, 244);
+    background-size: 100%;
+
+    .imgDogsLanding {
+        @include size(650px, 550px);
+
+    }
+    .containerT {
+        width: 100%;
+        height: 50%;
+        display: flex;
+        justify-content: center;
+        .img_Title {
+            width: 60vw;
+            height: auto;
+        }
+    }
+    .containerW {
+        width: 100%;
+        height: 50%;
+        display: flex;
+        justify-content: flex-end;
+        .welcome {
+            cursor: pointer;
+            width: 20vw;
+            height: auto;
+            //position: absolute;
+        }
+    }
+    
+    
+    // .contTitle {
+    //     display: flex;
+    //     flex-direction: column;
+    //     align-items: center;
+
+    //     .titleLanding {
+    //         padding-right: 40px;
+    //     }
+
+        
+    // }
+}

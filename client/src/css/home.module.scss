@@ -1,0 +1,33 @@
+@import "../sass/mixins.scss";
+
+
+.paginado{
+    display: flex;
+    flex-direction: column;
+    align-items: center;  
+    background-color:#81a9cc;
+    width: 100%;
+    padding-top: 80px;
+    
+}    
+
+.contHome {
+    min-height: 150vh;
+    //background-color:rgb(203, 207, 160);
+    background-image: url(../img/dogsblue.jpeg);
+    background-size: 800px;   
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+
+    }
+    
+    .loading{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);        
+    }
+
+
+    
