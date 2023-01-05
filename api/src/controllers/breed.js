@@ -7,35 +7,33 @@ const getBreedsApiInfo = async () => {
   const apiBreeds = await axios.get(
     `https://api.thedogapi.com/v1/breeds?api_key=${API_KEY}`
   );
-  const apiInfo = await apiBreeds.data.map(
-    (e) => {
-      let weight = e.weight.metric.split("-");
-      let height = e.height.metric.split("-");
-      let life_span = e.life_span.split("-");
-      let weightMin = parseInt(weight[0]);
-      let weightMax = parseInt(weight[1]);
-      let heightMin = parseInt(height[0]);
-      let heightMax = parseInt(height[1]);
-      let life_span_min = parseInt(life_span[0]);
-      let life_span_max = parseInt(life_span[1]);
-      return {
-        weightMin: weightMin ? weightMin : weightMax, //e.weight.metric,
-        weightMax: weightMax ? weightMax : weightMin,
-        heightMin: heightMin ? heightMin : heightMax, //e.height.metric,
-        heightMax: heightMax ? heightMax : heightMin,
-        id: e.id,
-        name: e.name,
-        bred_for: e.bred_for,
-        breed_group: e.breed_group,
-        life_span_min: life_span_min ? life_span_min : life_span_max,
-        life_span_max: life_span_max ? life_span_max : life_span_min,
-        temperament: e.temperament ? e.temperament : "Not Temperament",
-        origin: e.origin,
-        reference_image_id: e.reference_image_id,
-        image: e.image.url,
-      };
-    }
-  );
+  const apiInfo = await apiBreeds.data.map((e) => {
+    let weight = e.weight.metric.split("-");
+    let height = e.height.metric.split("-");
+    let life_span = e.life_span.split("-");
+    let weightMin = parseInt(weight[0]);
+    let weightMax = parseInt(weight[1]);
+    let heightMin = parseInt(height[0]);
+    let heightMax = parseInt(height[1]);
+    let life_span_min = parseInt(life_span[0]);
+    let life_span_max = parseInt(life_span[1]);
+    return {
+      weightMin: weightMin ? weightMin : weightMax, //e.weight.metric,
+      weightMax: weightMax ? weightMax : weightMin,
+      heightMin: heightMin ? heightMin : heightMax, //e.height.metric,
+      heightMax: heightMax ? heightMax : heightMin,
+      id: e.id,
+      name: e.name,
+      bred_for: e.bred_for,
+      breed_group: e.breed_group,
+      life_span_min: life_span_min ? life_span_min : life_span_max,
+      life_span_max: life_span_max ? life_span_max : life_span_min,
+      temperament: e.temperament ? e.temperament : "Not Temperament",
+      origin: e.origin,
+      reference_image_id: e.reference_image_id,
+      image: e.image.url,
+    };
+  });
   console.log("ESTO DEVUELVE LA API: ", apiInfo);
   return apiInfo;
 };
@@ -151,49 +149,66 @@ const postBreed = async (req, res) => {
 
 const getTemperaments = async (req, res) => {
   try {
-    const dbTemperament = await Temperament.findAll({
-      include: [
-        {
-          model: Dog,
-          attributes: ["name"],
-          through: {
-            attributes: [],
-          },
-        },
-      ],
-    });
+    const dbTemperament = [];
+    // const dbTemperament = await Temperament.findAll({
+    //   include: [
+    //     {
+    //       model: Dog,
+    //       attributes: ["name"],
+    //       through: {
+    //         attributes: [],
+    //       },
+    //     },
+    //   ],
+    // });
 
     if (!dbTemperament.length) {
       const apiData = await axios.get(
         `https://api.thedogapi.com/v1/breeds?api_key=${API_KEY}`
       );
+      const temperaments = apiData.data.map((t) => t.temperament);
+      const temps = temperaments.toString().split(",");
+      const tempsArr = new Set(temps);
+      let result = [...tempsArr];
+      result
+        .filter((t) => t !== "")
+        .forEach((el) => {
+          let i = el.trim();
+          Temperament.findOrCreate({
+            where: { name: i },
+          });
+        });
 
-      const apiTemperament = apiData.data.map((e) => {
-        return {
-          temperament: e.temperament,
-        };
-      });
-
-      let aux = apiTemperament
-        .map((e) => Object.values(e))
-        .flat()
-        .join(", ")
-        .split(", ");
-      let aux2 = new Set(aux);
-      let aux3 = [...aux2];
-      let arrayTemperaments = aux3.filter((e) => e !== "").slice(1);
-
-      let temperamentsFinal = arrayTemperaments.sort();
-      console.log(temperamentsFinal);
-
-      temperamentsFinal.map((el) =>
-        Temperament.findOrCreate({
-          where: { name: el },
-        })
-      );
-    } else {
-      res.json(dbTemperament);
+      const allTemp = await Temperament.findAll();
+      res.send(allTemp);
     }
+
+    //   const apiTemperament = apiData.data.map((e) => {
+    //     return {
+    //       temperament: e.temperament,
+    //     };
+    //   });
+
+    //   let aux = apiTemperament
+    //     .map((e) => Object.values(e))
+    //     .flat()
+    //     .join(", ")
+    //     .split(", ");
+    //   let aux2 = new Set(aux);
+    //   let aux3 = [...aux2];
+    //   let arrayTemperaments = aux3.filter((e) => e !== "").slice(1);
+
+    //   let temperamentsFinal = arrayTemperaments.sort();
+    //   console.log(temperamentsFinal);
+
+    //   temperamentsFinal.map((el) =>
+    //     Temperament.findOrCreate({
+    //       where: { name: el },
+    //     })
+    //   );
+    // } else {
+    //   res.json(dbTemperament);
+    // }
   } catch (error) {
     console.log(error);
   }
@@ -206,5 +221,5 @@ module.exports = {
   getBreedByName,
   getBreedById,
   postBreed,
-  getTemperaments
+  getTemperaments,
 };
