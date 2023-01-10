@@ -1,24 +1,24 @@
 @import "../sass/mixins.scss";
 
 
-.cont{
+.cont {
     display: flex;
     min-height: 150vh;
     justify-content: center;
     align-items: center;
     //background-color: rgb(161, 215, 226);
     padding: 30px;
-    background-image: url(../img/dogsblue.jpeg);
-    background-size: 800px;       
+    background-image: url(../img/dogsBlur.jpg);
+    background-size: cover;
 }
 
-.form{
-    background-color: #81a9cc; 
+.form {
+    background-color: #81a9cc;
     border-radius: 10px;
     padding: 20px;
     width: 600px;
     height: 900px;
-    position:absolute;
+    position: absolute;
     top: 180px;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -26,10 +26,11 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
 }
 
-.title{
-    font-size:40px;
+.title {
+    font-size: 40px;
     font-weight: bold;
     color: rgb(4, 4, 18);
     text-align: center;
@@ -37,52 +38,53 @@
 
 }
 
-.labelName{
+.labelName {
     font-size: 20px;
     margin-right: 88px;
 }
-.labelHeightMin{
+
+.labelHeightMin {
     font-size: 20px;
     margin-right: 43px;
 }
 
-.labelHeightMax{
+.labelHeightMax {
     font-size: 20px;
     margin-right: 40px;
 }
 
-.labelWeightMin{
+.labelWeightMin {
     font-size: 20px;
     margin-right: 38px;
 }
 
-.labelWeightMax{
+.labelWeightMax {
     font-size: 20px;
     margin-right: 36px;
 }
 
-.labelLife_span_min{
+.labelLife_span_min {
     font-size: 20px;
     margin-right: 23px;
 }
 
-.labelLife_span_max{
+.labelLife_span_max {
     font-size: 20px;
     margin-right: 20px;
 }
 
-.labelTemperaments{    
+.labelTemperaments {
     font-size: 20px;
     margin-right: 20px;
 }
 
-.labelImage{    
+.labelImage {
     font-size: 20px;
     margin-right: 88px;
 }
 
 
-.input{
+.input {
     color: rgb(24, 4, 4);
     font-size: 15px;
     font-weight: bold;
@@ -90,44 +92,48 @@
     margin-bottom: 5px;
 }
 
-.error{    
+.error {
     font-size: 11px;
     color: rgb(160, 8, 8);
 
 }
 
-.select{
-    background-color: white; 
+.select {
+    background-color: #0b6dee;
     border: 1px, black;
-    color: black;     
+    color: black;
     font-size: 15px;
 }
 
-.buttonHome{
+.buttonHome {
+    cursor: pointer;
     margin-top: 10px;
-    background-color: white; 
-    border: 1px, black;
-    color: black;     
+    border: none;
+    border-radius: 15px;
+    color: black;
     font-size: 15px;
-    cursor: pointer;
+    width: 8vw;
+    height: 6vh;
+    background-color: #0b6dee;
 }
 
-.buttonX{
+.buttonX {
     margin-top: 10px;
-    background-color: white; 
+    background-color: white;
     border: 1px, black;
-    color: black;     
+    color: black;
     font-size: 15px;
     cursor: pointer;
 }
 
-.buttonCreate{
-    margin-top: 50px;
-    background-color: white; 
-    border: 1px, black;
-    color: black;     
-    font-size: 15px;
+.buttonCreate {
     cursor: pointer;
+    margin-top: 25px;
+    border: none;
+    border-radius: 15px;
+    color: black;
+    font-size: 15px;
+    width: 8vw;
+    height: 6vh;
+    background-color: #0b6dee;
 }
-
-

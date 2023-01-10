@@ -14,8 +14,9 @@
 .contHome {
     min-height: 150vh;
     //background-color:rgb(203, 207, 160);
-    background-image: url(../img/dogsblue.jpeg);
-    background-size: 800px;   
+    background-image: url(../img/dogsBlur.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;   
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 10px;
